@@ -1,0 +1,36 @@
+{
+  "name": "MY-FIRST-GRAPHQL-SERVER",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "server": "nodemon --exec babel-node src/index.js",
+    "dev": "npm run server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.16",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "custom-env": "^1.0.2",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-resolvers": "^0.3.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.1",
+    "mongoose": "^5.8.9",
+    "uuid": "^3.4.0"
+  }
+}

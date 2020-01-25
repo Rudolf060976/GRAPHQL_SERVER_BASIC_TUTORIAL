@@ -7,8 +7,18 @@ const schema = gql`
 		me: User
 		user(id: ID!): User
 		users: [User!]
-		messages: [Message!]
+		messages(cursor: String, limit: Int): MessageConnection!
 		message(id: ID!): Message!		
+	}
+
+	type MessageConnection {
+		edges: [Message!]!
+		pageInfo: PageInfo!
+	}
+
+	type PageInfo {
+		hasNextPage: Boolean!
+		endCursor: String!
 	}
 
 	type Mutation {

@@ -4,6 +4,8 @@ const express = require('express');
 
 const { ObjectID } = require('mongodb');
 
+const DataLoader = require('dataloader');
+
 const { ApolloServer, AuthenticationError } = require('apollo-server-express');
 
 const schema = require('./graphql/schema');
@@ -17,6 +19,8 @@ const userTokens = require('./modules/JWT/userTokens');
 const { connectDB, mongoose } = require('./database/mongoose');
 
 const { seedDatabase } = require('./database/seedDatabase');
+
+const loaders = require('./modules/loaders');
 
 const cors = require('cors');
 
@@ -48,7 +52,7 @@ connectDB().then( async () => {
 	}
 
 	seedDatabase();
-
+		
 const server = new ApolloServer({
 	typeDefs: schema,
 	resolvers,
@@ -84,7 +88,10 @@ const server = new ApolloServer({
 		return {
 			models,
 			ObjectID,
-			me
+			me,
+			loaders: {
+				user: new DataLoader(keys => loaders.user.batchUsers(keys, models))
+			}
 		};
 
 	}
